@@ -3,19 +3,20 @@
      "type": "module",
      "version": "0.0.1",
      "scripts": {
-       "dev": "astro dev",
-       "start": "astro dev",
-       "build": "astro build",
-       "preview": "astro preview",
-       "astro": "astro",
-       "setup-db": "node src/setup-db.js"
+          "dev": "astro dev",
+          "start": "astro dev",
+          "build": "astro build",
+          "preview": "astro preview",
+          "astro": "astro",
+          "setup-db": "node src/setup-db.js"
      },
      "dependencies": {
-       "astro": "^2.5.0",
-       "bulma": "^0.9.4",
-       "better-sqlite3": "^8.3.0"
+          "@astrojs/netlify": "^5.5.4",
+          "astro": "^4.16.6",
+          "better-sqlite3": "^8.3.0",
+          "bulma": "^0.9.4"
      },
      "devDependencies": {
-       "sass": "^1.62.1"
+          "sass": "^1.62.1"
      }
-   }
+}
