@@ -1,0 +1,43 @@
+---
+import Metahead from '../components/Metahead.astro';
+import Nav from '../components/Nav.astro';
+import Banner from '../components/Banner.astro';
+import ShoppingCart from '../components/ShoppingCart.astro';
+import ContactDetails from '../components/ContactDetails.astro';
+import OrderSummary from '../components/OrderSummary.astro';
+import '../styles/custom.scss';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<Metahead title={title} description={description} image={image} />
+	</head>
+	<body>
+		<Banner />
+		<Nav />
+		<slot />
+		<ShoppingCart />
+		<ContactDetails />
+		<OrderSummary />
+		<div id="notification-container"></div>
+		<script src="../scripts/cart.js"></script>
+	</body>
+</html>
+
+<style>
+	#notification-container {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		z-index: 9999;
+	}
+</style>

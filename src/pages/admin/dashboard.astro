@@ -1,0 +1,19 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+
+// if (Astro.request.method === "GET") {
+//   if (!Astro.cookies.get('isAdminLoggedIn').boolean()) {
+//     return Astro.redirect('/admin/login');
+//   }
+// }
+---
+
+<AdminLayout title="Admin Dashboard">
+  <div class="container">
+    <h1 class="title">Admin Dashboard</h1>
+    <div class="buttons">
+      <a href="/admin/products" class="button is-primary">Manage Products</a>
+      <a href="/admin/orders" class="button is-info">Manage Orders</a>
+    </div>
+  </div>
+</AdminLayout>

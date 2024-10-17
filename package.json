@@ -1,0 +1,21 @@
+{
+     "name": "restaurant-menu",
+     "type": "module",
+     "version": "0.0.1",
+     "scripts": {
+       "dev": "astro dev",
+       "start": "astro dev",
+       "build": "astro build",
+       "preview": "astro preview",
+       "astro": "astro",
+       "setup-db": "node src/setup-db.js"
+     },
+     "dependencies": {
+       "astro": "^2.5.0",
+       "bulma": "^0.9.4",
+       "better-sqlite3": "^8.3.0"
+     },
+     "devDependencies": {
+       "sass": "^1.62.1"
+     }
+   }

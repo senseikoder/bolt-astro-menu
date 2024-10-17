@@ -1,0 +1,77 @@
+---
+import SeeMoreModal from './SeeMoreModal.astro';
+import menuData from '../data/menu.json';
+---
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#">
+      <img src="https://via.placeholder.com/50" alt="Restaurant Logo" class="logo-img">
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      {menuData.sections.map(section => (
+        <a class="navbar-item" href={`#${section.id}`}>
+          {section.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary" id="see-more-button">
+            See More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<button id="cart-button" class="button is-primary is-rounded floating-cart-button">
+  <span class="icon">
+    <i class="fas fa-shopping-cart"></i>
+  </span>
+  <span>Cart (<span id="cart-count">0</span>)</span>
+</button>
+
+<SeeMoreModal />
+
+<style>
+  .floating-cart-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const seeMoreButton = document.getElementById('see-more-button');
+    const modal = document.getElementById('see-more-modal');
+    const modalBackground = document.querySelector('.modal-background');
+    const modalClose = document.querySelector('.modal-close');
+
+    seeMoreButton.addEventListener('click', () => {
+      modal.classList.add('is-active');
+      document.body.classList.add('is-clipped');
+    });
+
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.body.classList.remove('is-clipped');
+    }
+
+    modalBackground.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeModal);
+  });
+</script>

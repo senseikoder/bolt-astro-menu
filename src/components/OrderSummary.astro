@@ -1,0 +1,125 @@
+
+<div id="order-summary" class="order-summary">
+  <button id="close-summary" class="close-button">
+    <span class="icon">
+      <i class="fas fa-times"></i>
+    </span>
+  </button>
+  <h2 class="title is-4 mb-4">Order Summary</h2>
+  <div id="summary-products"></div>
+  <div id="summary-contact" class="mt-4"></div>
+  <div class="has-text-right mt-4">
+    <strong>Total: $<span id="summary-total">0.00</span></strong>
+  </div>
+  <div class="has-text-centered mt-4">
+    <button id="confirm-order" class="button is-primary">Confirm Order</button>
+  </div>
+</div>
+
+<style>
+  .order-summary {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 1002;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 8px;
+  }
+
+  .order-summary.is-active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4a4a4a;
+    transition: color 0.3s ease;
+  }
+
+  .close-button:hover {
+    color: #363636;
+  }
+
+  @media screen and (max-width: 768px) {
+    .order-summary {
+      width: 95%;
+      height: 90vh;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const orderSummary = document.getElementById('order-summary');
+    const closeSummary = document.getElementById('close-summary');
+    const confirmOrderButton = document.getElementById('confirm-order');
+
+    closeSummary.addEventListener('click', () => {
+      orderSummary.classList.remove('is-active');
+    });
+
+
+
+    confirmOrderButton.addEventListener('click', async () => {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const contactInfo = JSON.parse(localStorage.getItem('contactInfo')) || {};
+      const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+      const orderData = {
+        customer_name: contactInfo.name,
+        customer_phone: contactInfo.phone,
+        customer_address: contactInfo.address,
+        payment_method: contactInfo.payment,
+        shipping_method: contactInfo.shipping,
+        total_amount: totalAmount,
+        items: cartItems.map(item => ({
+          id: item.id,
+          quantity: item.quantity,
+          price: item.price
+        }))
+      };
+
+      try {
+        const response = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create order');
+        }
+
+        const result = await response.json();
+        alert(`Order placed successfully! Your order ID is: ${result.orderId}`);
+        localStorage.removeItem('cart');
+        localStorage.removeItem('contactInfo');
+        orderSummary.classList.remove('is-active');
+        window.location.href = '/'; // Redirect to home page
+      } catch (error) {
+        console.error('Error creating order:', error);
+        alert('Failed to place order. Please try again.');
+      }
+    });
+  });
+</script>

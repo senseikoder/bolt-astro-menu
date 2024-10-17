@@ -1,0 +1,45 @@
+---
+const bannerText = "🎉 Grand Opening Special: 20% off your first order! Use code: WELCOME20";
+const backgroundImage = "https://source.unsplash.com/random/1600x250/?restaurant,food";
+---
+<div class="banner" style={`background-image: url('${backgroundImage}');`}>
+  <div class="banner-content">
+    <p>{bannerText}</p>
+  </div>
+</div>
+
+<style>
+  .banner {
+    height: 250px;
+    background-color: var(--accent-color);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .banner-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  .banner p {
+    color: var(--light-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .banner {
+      height: 200px;
+    }
+
+    .banner p {
+      font-size: 1rem;
+    }
+  }
+</style>

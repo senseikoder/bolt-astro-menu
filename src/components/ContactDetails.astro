@@ -1,0 +1,183 @@
+---
+---
+<div id="contact-details" class="contact-details">
+  <button id="close-contact" class="close-button">
+    <span class="icon">
+      <i class="fas fa-times"></i>
+    </span>
+  </button>
+  <h2 class="title is-4 mb-4">Contact Details</h2>
+  <form id="contact-form">
+    <div class="box mb-4">
+      <h3 class="title is-5 mb-3">Payment Methods</h3>
+      <div class="field">
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="payment" value="credit-card" checked>
+            Credit Card
+          </label>
+          <label class="radio">
+            <input type="radio" name="payment" value="paypal">
+            PayPal
+          </label>
+          <label class="radio">
+            <input type="radio" name="payment" value="cash">
+            Cash on Delivery
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="box mb-4">
+      <h3 class="title is-5 mb-3">Shipping Method / Pickup Options</h3>
+      <div class="field">
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="shipping" value="delivery" checked>
+            Home Delivery
+          </label>
+          <label class="radio">
+            <input type="radio" name="shipping" value="pickup">
+            In-Store Pickup
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="box mb-4">
+      <h3 class="title is-5 mb-3">Customer Information</h3>
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" name="name" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Phone</label>
+        <div class="control">
+          <input class="input" type="tel" name="phone" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Address</label>
+        <div class="control">
+          <textarea class="textarea" name="address" required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+        <button type="submit" class="button is-primary">Place Order</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<style>
+  .contact-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 8px;
+  }
+
+  .contact-details.is-active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4a4a4a;
+    transition: color 0.3s ease;
+  }
+
+  .close-button:hover {
+    color: #363636;
+  }
+
+  @media screen and (max-width: 768px) {
+    .contact-details {
+      width: 95%;
+      height: 90vh;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const contactDetails = document.getElementById('contact-details');
+    const closeContact = document.getElementById('close-contact');
+    const form = document.getElementById('contact-form');
+    const orderSummary = document.getElementById('order-summary');
+
+    closeContact.addEventListener('click', () => {
+      contactDetails.classList.remove('is-active');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const contactInfo = Object.fromEntries(formData);
+
+      // Store contact information in localStorage
+      localStorage.setItem('contactInfo', JSON.stringify(contactInfo));
+
+      // Hide contact details and show order summary
+      contactDetails.classList.remove('is-active');
+      orderSummary.classList.add('is-active');
+
+      // Update order summary with contact information
+      const summaryContact = document.getElementById('summary-contact');
+      summaryContact.innerHTML = `
+        <p><strong>Name:</strong> ${contactInfo.name}</p>
+        <p><strong>Phone:</strong> ${contactInfo.phone}</p>
+        <p><strong>Address:</strong> ${contactInfo.address}</p>
+        <p><strong>Payment:</strong> ${contactInfo.payment}</p>
+        <p><strong>Shipping:</strong> ${contactInfo.shipping}</p>
+      `;
+
+      // Update order summary with product information
+      const summaryProducts = document.getElementById('summary-products');
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      let productsHtml = '';
+      let total = 0;
+
+      cartItems.forEach(item => {
+        productsHtml += `
+          <div class="columns is-mobile">
+            <div class="column">${item.name}</div>
+            <div class="column has-text-right">${item.quantity} x $${item.price.toFixed(2)}</div>
+          </div>
+        `;
+        total += item.price * item.quantity;
+      });
+
+      summaryProducts.innerHTML = productsHtml;
+
+      // Update total amount
+      const summaryTotal = document.getElementById('summary-total');
+      summaryTotal.textContent = `$${total.toFixed(2)}`;
+    });
+  });
+</script>

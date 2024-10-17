@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+// Custom color palette
+$primary: #ff6b6b;
+$secondary: #4ecdc4;
+$accent: #feca57;
+$dark: #2c3e50;
+$light: #f7f7f7;
+
+// Typography
+$family-sans-serif: "Poppins", sans-serif;
+$family-secondary: "Playfair Display", serif;
+
+// Update Bulma's global variables
+$family-primary: $family-sans-serif;
+$body-background-color: $light;
+$text: $dark;
+$link: $secondary;
+$link-hover: darken($secondary, 15%);
+
+// Navbar customization
+$navbar-background-color: $light;
+$navbar-item-color: $light;
+$navbar-item-hover-color: $primary;
+$navbar-burger-color: $dark;
+
+// Button customization
+$button-color: $light;
+$button-background-color: $primary;
+$button-border-color: $primary;
+$button-hover-color: $light;
+$button-hover-border-color: darken($primary, 10%);
+
+// Card customization
+$card-background-color: $light;
+$card-shadow: 0 2px 15px rgba($dark, 0.1);
+
+// Spacing
+$section-padding: 3rem 1.5rem;
+$card-content-padding: 1.5rem;
+
+// Import Bulma
+@import "bulma/bulma.sass";
+
+// Custom styles
+.navbar-brand .navbar-item img {
+  max-height: 2.5rem;
+}
+
+.card {
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.menu-section {
+  margin-bottom: 3rem;
+}
+
+.menu-item-price {
+  font-family: $family-secondary;
+  font-weight: bold;
+  color: $primary;
+}
+
+.add-to-cart-button {
+  border-radius: 50%;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.section-title {
+  font-family: $family-secondary;
+  color: $secondary;
+  margin-bottom: 2rem;
+}
+
+// Mobile menu styles
+@media screen and (max-width: 1023px) {
+  .navbar-menu {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba($dark, 0.1);
+  }
+
+  .navbar-item {
+    padding: 0.7rem 1rem;
+  }
+
+  .navbar-burger {
+    margin-left: auto;
+  }
+}
+
+// CSS Variables for global use
+:root {
+  --primary-color: #{$primary};
+  --secondary-color: #{$secondary};
+  --accent-color: #{$accent};
+  --dark-color: #{$dark};
+  --light-color: #{$light};
+}
+
+// Floating cart button styles
+.floating-cart-button {
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Modal customization
+.modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-close {
+  background-color: rgba($dark, 0.2);
+  &:hover {
+    background-color: rgba($dark, 0.4);
+  }
+}
+
+.box {
+  box-shadow: 0 5px 15px rgba($dark, 0.1);
+}
+
+// Notification animation
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.notification {
+  &.fadeInOut {
+    animation: fadeInOut 3s ease-in-out;
+  }
+}
+
+// ... (rest of the styles remain unchanged)

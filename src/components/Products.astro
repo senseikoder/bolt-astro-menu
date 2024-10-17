@@ -1,0 +1,40 @@
+---
+const { category, products } = Astro.props;
+---
+
+<section id={category} class="section">
+  <h2 class="subtitle">{category}</h2>
+  <div class="columns is-multiline">
+    {products.map((item) => (
+      <div class="column is-one-quarter">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src={item.image} alt={item.name}>
+            </figure>
+          </div>
+          <div class="card-content">
+            <p class="title is-4">{item.name}</p>
+            <div class="content">
+              {item.description}
+            </div>
+            <div class="level is-mobile">
+              <div class="level-left">
+                <p class="subtitle is-6">
+                  <span class="tag is-primary is-medium">${item.price.toFixed(2)}{item.unit ? ` / ${item.unit}` : ''}</span>
+                </p>
+              </div>
+              <div class="level-right">
+                <button class="button is-primary is-rounded add-to-cart" data-id={item.id} data-name={item.name} data-price={item.price} data-image={item.image}>
+                  <span class="icon">
+                    <i class="fas fa-plus"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

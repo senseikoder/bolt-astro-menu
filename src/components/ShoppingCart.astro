@@ -1,0 +1,158 @@
+---
+---
+<div id="shopping-cart" class="shopping-cart">
+  <button id="close-cart" class="close-button">
+    <span class="icon">
+      <i class="fas fa-times"></i>
+    </span>
+  </button>
+  <h2 class="title is-4 mb-4">Shopping Cart</h2>
+  <div id="cart-items"></div>
+  <div id="cart-empty" class="has-text-centered my-6 is-hidden">
+    <p class="is-size-5">Your cart is empty</p>
+    <p class="mt-2">Add some delicious items to get started!</p>
+  </div>
+  <div id="cart-total" class="has-text-right mt-4">
+    <strong>Total: $<span id="total-price">0.00</span></strong>
+  </div>
+  <div class="has-text-centered mt-4">
+    <button id="continue-order" class="button is-primary">Continuar Pedido</button>
+  </div>
+</div>
+
+<style>
+  .shopping-cart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 2rem;
+    overflow-y: auto;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 8px;
+  }
+
+  .shopping-cart.is-active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4a4a4a;
+    transition: color 0.3s ease;
+  }
+
+  .close-button:hover {
+    color: #363636;
+  }
+
+  @media screen and (max-width: 768px) {
+    .shopping-cart {
+      width: 95%;
+      height: 90vh;
+    }
+  }
+
+  .cart-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  .cart-item-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .cart-item-content {
+    flex-grow: 1;
+  }
+
+  .cart-item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .cart-item-actions button {
+    margin-left: 0.5rem;
+  }
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+  }
+
+  .quantity-control button {
+    padding: 0 0.5rem;
+  }
+
+  .quantity-control span {
+    min-width: 1.5rem;
+    text-align: center;
+  }
+
+  #continue-order {
+    width: 100%;
+    max-width: 300px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const shoppingCart = document.getElementById('shopping-cart');
+    const closeCart = document.getElementById('close-cart');
+    const continueOrder = document.getElementById('continue-order');
+    const cartItems = document.getElementById('cart-items');
+    const cartEmpty = document.getElementById('cart-empty');
+    const cartTotal = document.getElementById('cart-total');
+    const contactDetails = document.getElementById('contact-details');
+
+    closeCart.addEventListener('click', () => {
+      shoppingCart.classList.remove('is-active');
+    });
+
+    continueOrder.addEventListener('click', () => {
+      shoppingCart.classList.remove('is-active');
+      contactDetails.classList.add('is-active');
+    });
+
+    // Function to check if cart is empty and update UI
+    function updateCartUI() {
+      if (cartItems.children.length === 0) {
+        cartEmpty.classList.remove('is-hidden');
+        cartTotal.classList.add('is-hidden');
+        continueOrder.classList.add('is-hidden');
+      } else {
+        cartEmpty.classList.add('is-hidden');
+        cartTotal.classList.remove('is-hidden');
+        continueOrder.classList.remove('is-hidden');
+      }
+    }
+
+    // Call updateCartUI initially and whenever the cart changes
+    updateCartUI();
+    new MutationObserver(updateCartUI).observe(cartItems, { childList: true });
+  });
+</script>

@@ -1,0 +1,53 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Admin Login">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title has-text-centered">Admin Login</h1>
+        <form id="login-form">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" name="username" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" name="password" required>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-primary is-fullwidth">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const username = formData.get('username');
+      const password = formData.get('password');
+
+      // For demonstration purposes, we're using a hardcoded username and password
+      // In a real application, you should use a secure authentication method
+      if (username === 'admin' && password === 'password') {
+        localStorage.setItem('isAdminLoggedIn', 'true');
+        window.location.href = '/admin/dashboard';
+      } else {
+        alert('Login failed. Please check your credentials.');
+      }
+    });
+  });
+</script>

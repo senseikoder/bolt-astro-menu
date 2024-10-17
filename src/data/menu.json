@@ -1,0 +1,142 @@
+{
+  "sections": [
+    {
+      "id": "appetizers",
+      "name": "Appetizers",
+      "items": [
+        {
+          "id": "app1",
+          "name": "Bruschetta",
+          "price": 8.99,
+          "description": "Toasted bread topped with fresh tomatoes, garlic, and basil.",
+          "image": "bruschetta"
+        },
+        {
+          "id": "app2",
+          "name": "Calamari",
+          "price": 10.99,
+          "description": "Crispy fried squid served with marinara sauce.",
+          "image": "calamari"
+        },
+        {
+          "id": "app3",
+          "name": "Spinach Artichoke Dip",
+          "price": 9.99,
+          "description": "Creamy spinach and artichoke dip served with tortilla chips.",
+          "image": "spinach+dip"
+        },
+        {
+          "id": "app4",
+          "name": "Buffalo Wings",
+          "price": 11.99,
+          "description": "Spicy buffalo wings served with celery and blue cheese dressing.",
+          "image": "chicken+wings"
+        }
+      ]
+    },
+    {
+      "id": "main-courses",
+      "name": "Main Courses",
+      "items": [
+        {
+          "id": "main1",
+          "name": "Grilled Salmon",
+          "price": 22.99,
+          "description": "Fresh salmon fillet grilled to perfection, served with roasted vegetables.",
+          "image": "grilled+salmon"
+        },
+        {
+          "id": "main2",
+          "name": "Chicken Parmesan",
+          "price": 18.99,
+          "description": "Breaded chicken breast topped with marinara sauce and melted mozzarella.",
+          "image": "chicken+parmesan"
+        },
+        {
+          "id": "main3",
+          "name": "Ribeye Steak",
+          "price": 28.99,
+          "description": "12oz ribeye steak cooked to your liking, served with mashed potatoes and asparagus.",
+          "image": "steak"
+        },
+        {
+          "id": "main4",
+          "name": "Vegetable Pasta",
+          "price": 16.99,
+          "description": "Penne pasta tossed with seasonal vegetables in a light garlic and olive oil sauce.",
+          "image": "vegetable+pasta"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "des1",
+          "name": "Tiramisu",
+          "price": 7.99,
+          "description": "Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cream.",
+          "image": "tiramisu"
+        },
+        {
+          "id": "des2",
+          "name": "Chocolate Lava Cake",
+          "price": 8.99,
+          "description": "Warm chocolate cake with a gooey center, served with vanilla ice cream.",
+          "image": "chocolate+lava+cake"
+        },
+        {
+          "id": "des3",
+          "name": "New York Cheesecake",
+          "price": 8.99,
+          "description": "Creamy New York-style cheesecake served with a berry compote.",
+          "image": "cheesecake"
+        },
+        {
+          "id": "des4",
+          "name": "Crème Brûlée",
+          "price": 7.99,
+          "description": "Rich custard topped with a layer of hard caramel.",
+          "image": "creme+brulee"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "drink1",
+          "name": "House Red Wine",
+          "price": 7.99,
+          "description": "Our signature red wine blend.",
+          "image": "red+wine",
+          "unit": "glass"
+        },
+        {
+          "id": "drink2",
+          "name": "Craft Beer",
+          "price": 6.99,
+          "description": "Rotating selection of local craft beers.",
+          "image": "craft+beer",
+          "unit": "pint"
+        },
+        {
+          "id": "drink3",
+          "name": "Classic Mojito",
+          "price": 9.99,
+          "description": "Refreshing cocktail with rum, mint, lime, and soda water.",
+          "image": "mojito"
+        },
+        {
+          "id": "drink4",
+          "name": "Fresh Lemonade",
+          "price": 4.99,
+          "description": "Homemade lemonade with fresh lemons and a hint of mint.",
+          "image": "lemonade"
+        }
+      ]
+    }
+  ]
+}

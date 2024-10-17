@@ -1,0 +1,43 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getAllOrders } from '../../lib/orders';
+/*
+if (Astro.request.method === "GET") {
+  if (!Astro.cookies.get('isAdminLoggedIn').boolean()) {
+    return Astro.redirect('/admin/login');
+  }
+}
+  */
+
+const orders = await getAllOrders();
+---
+
+<AdminLayout title="Manage Orders">
+  <div class="container">
+    <h1 class="title">Manage Orders</h1>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Total Amount</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {orders.map((order) => (
+          <tr>
+            <td>{order.id}</td>
+            <td>{order.customer_name}</td>
+            <td>${order.total_amount.toFixed(2)}</td>
+            <td>{order.status}</td>
+            <td>
+              <a href={`/admin/orders/${order.id}`} class="button is-small is-info">View</a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</AdminLayout>
