@@ -1,3 +1,6 @@
+---
+import seeMoreConfig from "../data/seeMoreConfig.json";
+---
 
 <div id="order-summary" class="order-summary">
   <button id="close-summary" class="close-button">
@@ -6,13 +9,24 @@
     </span>
   </button>
   <h2 class="title is-4 mb-4">Order Summary</h2>
-  <div id="summary-products"></div>
-  <div id="summary-contact" class="mt-4"></div>
-  <div class="has-text-right mt-4">
-    <strong>Total: $<span id="summary-total">0.00</span></strong>
+  <div class="box mb-4">
+    <h3 class="title is-5 mb-3">Products</h3>
+    <div id="summary-products"></div>
   </div>
-  <div class="has-text-centered mt-4">
-    <button id="confirm-order" class="button is-primary">Confirm Order</button>
+  <div class="box mb-4">
+    <h3 class="title is-5 mb-3">Contact Information</h3>
+    <div id="summary-contact"></div>
+  </div>
+  <div class="box mb-4">
+    <h3 class="title is-5 mb-3">Total Amount</h3>
+    <p class="is-size-4" id="summary-total"></p>
+  </div>
+  <div class="field is-grouped is-grouped-centered">
+    <div class="control">
+      <button id="confirm-order" class="button is-primary"
+        >Confirm Order via WhatsApp</button
+      >
+    </div>
   </div>
 </div>
 
@@ -27,7 +41,9 @@
     height: 80vh;
     background-color: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
     padding: 2rem;
     overflow-y: auto;
     z-index: 1002;
@@ -66,60 +82,52 @@
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const orderSummary = document.getElementById('order-summary');
-    const closeSummary = document.getElementById('close-summary');
-    const confirmOrderButton = document.getElementById('confirm-order');
+<script define:vars={{ whatsapp: seeMoreConfig.whatsapp }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const orderSummary = document.getElementById("order-summary");
+    const closeSummary = document.getElementById("close-summary");
+    const confirmOrder = document.getElementById("confirm-order");
 
-    closeSummary.addEventListener('click', () => {
-      orderSummary.classList.remove('is-active');
+    closeSummary.addEventListener("click", () => {
+      orderSummary.classList.remove("is-active");
     });
 
+    confirmOrder.addEventListener("click", () => {
+      const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      const contactInfo = JSON.parse(localStorage.getItem("contactInfo")) || {};
 
+      let message = "🍽️ *New Order* 🍽️\n\n";
 
-    confirmOrderButton.addEventListener('click', async () => {
-      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-      const contactInfo = JSON.parse(localStorage.getItem('contactInfo')) || {};
-      const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+      // Add contact information
+      message += "*Contact Information:*\n";
+      message += `Name: ${contactInfo.name}\n`;
+      message += `Phone: ${contactInfo.phone}\n`;
+      message += `Address: ${contactInfo.address}\n`;
+      message += `Payment: ${contactInfo.payment}\n`;
+      message += `Shipping: ${contactInfo.shipping}\n\n`;
 
-      const orderData = {
-        customer_name: contactInfo.name,
-        customer_phone: contactInfo.phone,
-        customer_address: contactInfo.address,
-        payment_method: contactInfo.payment,
-        shipping_method: contactInfo.shipping,
-        total_amount: totalAmount,
-        items: cartItems.map(item => ({
-          id: item.id,
-          quantity: item.quantity,
-          price: item.price
-        }))
-      };
+      // Add order items
+      message += "*Order Items:*\n";
+      let total = 0;
+      cartItems.forEach((item) => {
+        message += `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+        total += item.price * item.quantity;
+      });
 
-      try {
-        const response = await fetch('/api/create-order', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(orderData),
-        });
+      // Add total
+      message += `\n*Total: $${total.toFixed(2)}*`;
 
-        if (!response.ok) {
-          throw new Error('Failed to create order');
-        }
+      // Encode the message for URL
+      const encodedMessage = encodeURIComponent(message);
 
-        const result = await response.json();
-        alert(`Order placed successfully! Your order ID is: ${result.orderId}`);
-        localStorage.removeItem('cart');
-        localStorage.removeItem('contactInfo');
-        orderSummary.classList.remove('is-active');
-        window.location.href = '/'; // Redirect to home page
-      } catch (error) {
-        console.error('Error creating order:', error);
-        alert('Failed to place order. Please try again.');
-      }
+      // Create WhatsApp URL
+      const whatsappUrl = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodedMessage}`;
+
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, "_blank");
+
+      // Close the order summary
+      orderSummary.classList.remove("is-active");
     });
   });
 </script>

@@ -1,44 +1,47 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Products from '../components/Products.astro';
-import ContactDetails from '../components/ContactDetails.astro';
-import { getAllProducts } from '../lib/products';
+import Layout from "../layouts/Layout.astro";
+import Products from "../components/Products.astro";
+import ContactDetails from "../components/ContactDetails.astro";
+import menuData from "../data/menu.json";
+// import { getAllProducts } from '../lib/products';
 
 const title = "Our Restaurant Menu";
-const description = "Explore our delicious menu featuring appetizers, main courses, desserts, and drinks. Join us for a memorable dining experience!";
+const description =
+  "Explore our delicious menu featuring appetizers, main courses, desserts, and drinks. Join us for a memorable dining experience!";
 const image = "/images/restaurant-hero.jpg"; // Make sure this image exists in your public folder
 
-const products = await getAllProducts();
-const categories = [...new Set(products.map(product => product.category))];
+// const products = await getAllProducts();
+// const categories = [...new Set(products.map((product) => product.category))];
 ---
 
 <Layout title={title} description={description} image={image}>
-	<main class="container">
-		<h1 class="title has-text-centered mt-6">Our Menu</h1>
+  <main class="container">
+    <h1 class="title has-text-centered mt-6">Nuestro Menú</h1>
 
-		{categories.map(category => (
-			<Products category={category} products={products.filter(p => p.category === category)} />
-		))}
-	</main>
-	<ContactDetails />
+    {menuData.sections.map((section) => <Products sectionId={section.id} />)}
+  </main>
+  <ContactDetails />
 </Layout>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-		// Get all "navbar-burger" elements
-		const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(
+      document.querySelectorAll(".navbar-burger"),
+      0
+    );
 
-		// Add a click event on each of them
-		$navbarBurgers.forEach( el => {
-			el.addEventListener('click', () => {
-				// Get the target from the "data-target" attribute
-				const target = el.dataset.target;
-				const $target = document.getElementById(target);
+    // Add a click event on each of them
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener("click", () => {
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
 
-				// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-				el.classList.toggle('is-active');
-				$target.classList.toggle('is-active');
-			});
-		});
-	});
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle("is-active");
+        $target.classList.toggle("is-active");
+      });
+    });
+  });
 </script>

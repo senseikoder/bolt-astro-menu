@@ -30,21 +30,21 @@ const {
         </div>
         
         <div class="column is-full-mobile is-half-tablet">
-          <h3 class="title is-5 mb-3">Address</h3>
+          <h3 class="title is-5 mb-3">Dirección</h3>
           <p class="mb-5">{address}</p>
           
-          <h3 class="title is-5 mb-3">Opening Hours</h3>
+          <h3 class="title is-5 mb-3">Horario</h3>
           <ul class="mb-5">
             {openingHours.map(hours => <li>{hours}</li>)}
           </ul>
           
-          <h3 class="title is-5 mb-3">Contact</h3>
+          <h3 class="title is-5 mb-3">Contacto</h3>
           <p class="mb-3">
             <span class="icon"><i class="fab fa-whatsapp"></i></span>
             <a href={`https://wa.me/${whatsapp.replace(/\D/g,'')}`} target="_blank" rel="noopener noreferrer">{whatsapp}</a>
           </p>
           
-          <h3 class="title is-5 mb-3">Follow Us</h3>
+          <h3 class="title is-5 mb-3">Síguenos</h3>
           <div class="buttons">
             {socialMedia.map(social => (
               <a href={social.url} class="button is-light" target="_blank" rel="noopener noreferrer">

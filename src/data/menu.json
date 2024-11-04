@@ -1,140 +1,279 @@
 {
   "sections": [
     {
-      "id": "appetizers",
-      "name": "Appetizers",
+      "id": "roll-frios",
+      "name": "Rolls fríos",
       "items": [
         {
-          "id": "app1",
-          "name": "Bruschetta",
-          "price": 8.99,
-          "description": "Toasted bread topped with fresh tomatoes, garlic, and basil.",
-          "image": "bruschetta"
+          "id": "roll-1",
+          "name": "Fuji Roll",
+          "price": 9.0,
+          "description": "Relleno de cangrejo, cebollín, queso crema. Topping de camaronescrocantes y salsa Fuji.",
+          "image": "fuji-roll.jpg"
         },
         {
-          "id": "app2",
-          "name": "Calamari",
-          "price": 10.99,
-          "description": "Crispy fried squid served with marinara sauce.",
-          "image": "calamari"
+          "id": "roll-2",
+          "name": "Dinamita Roll",
+          "price": 8.0,
+          "description": "Relleno de aguacate, queso crema, pasta dinamita-shiracha. Topping de masago.",
+          "image": "dinamita-roll.jpg"
         },
         {
-          "id": "app3",
-          "name": "Spinach Artichoke Dip",
-          "price": 9.99,
-          "description": "Creamy spinach and artichoke dip served with tortilla chips.",
-          "image": "spinach+dip"
+          "id": "roll-3",
+          "name": "Alaska Roll",
+          "price": 13.0,
+          "description": "Relleno de salmón, cangrejo, queso crema, cebollín, aguacate. Topping de laminas de aguacate y salmón.",
+          "image": "alaska-roll.jpg"
         },
         {
-          "id": "app4",
-          "name": "Buffalo Wings",
-          "price": 11.99,
-          "description": "Spicy buffalo wings served with celery and blue cheese dressing.",
-          "image": "chicken+wings"
+          "id": "roll-4",
+          "name": "Fish Roll",
+          "price": 9.0,
+          "description": "Relleno de pescado blanco, cangrejo, cebollín, queso crema. Topping de masago y sésamo.",
+          "image": "fish-roll.jpg"
+        },
+        {
+          "id": "roll-5",
+          "name": "Futomaki roll",
+          "price": 8.0,
+          "description": "Relleno de atún, cangrejo, cebollín, queso crema. Topping de ensalada de wakame, cangrejo, salsa Fuji y Anguila.",
+          "image": "futomaki-roll.jpg"
+        },
+        {
+          "id": "roll-6",
+          "name": "Tilapia Roll",
+          "price": 8.0,
+          "description": "Relleno de pescado blanco tempura, cangrejo, cebollín, queso crema. Topping de sésamo, masago y salsa Anguila.",
+          "image": "tilapia-roll.jpg"
+        },
+        {
+          "id": "roll-7",
+          "name": "Waikiki Roll",
+          "price": 8.0,
+          "description": "Relleno de péscado blanco, cangrejo, cebollín, queso crema. Topping de laminas de aguacate, salsa spicy shiracha.",
+          "image": "waikiki-roll.jpg"
+        },
+        {
+          "id": "roll-8",
+          "name": "Acevichado Roll",
+          "price": 9.0,
+          "description": "Relleno de pescado blanco, camarones tempura, cangrejo, cebollín, queso crema. Topping de laminas de aguacate y pescado + salsa acevichada.",
+          "image": "acevichado-roll.jpg"
         }
       ]
     },
     {
-      "id": "main-courses",
-      "name": "Main Courses",
+      "id": "rolls-tempura",
+      "name": "Rolls Tempurizados",
       "items": [
         {
-          "id": "main1",
-          "name": "Grilled Salmon",
-          "price": 22.99,
-          "description": "Fresh salmon fillet grilled to perfection, served with roasted vegetables.",
-          "image": "grilled+salmon"
+          "id": "roll-9",
+          "name": "Tiger Roll Especial",
+          "price": 8.0,
+          "description": "Relleno de cangrejo, aguacate queso cremo. Topping ensalada dinamita. ",
+          "image": "tiger-roll-especial.jpg"
         },
         {
-          "id": "main2",
-          "name": "Chicken Parmesan",
-          "price": 18.99,
-          "description": "Breaded chicken breast topped with marinara sauce and melted mozzarella.",
-          "image": "chicken+parmesan"
+          "id": "roll-10",
+          "name": "Chicken Roll",
+          "price": 6.0,
+          "description": "Relleno de cangrejo, pollo crispy, jamón ahumado, queso crema, cebollín. Topping de salsa BBQ y sésamo + aros de cebolla.",
+          "image": "chicken-roll.jpg"
         },
         {
-          "id": "main3",
-          "name": "Ribeye Steak",
-          "price": 28.99,
-          "description": "12oz ribeye steak cooked to your liking, served with mashed potatoes and asparagus.",
-          "image": "steak"
+          "id": "roll-11",
+          "name": "Tilapia Roll",
+          "price": 8.0,
+          "description": "Relleno de pescado blanco, cangrejo, queso crema, cebollin. Topping de ensalada de wakame y cangrejo,salsa Fuji y Anguila. ",
+          "image": "tilapia-roll-temp.jpg"
         },
         {
-          "id": "main4",
-          "name": "Vegetable Pasta",
-          "price": 16.99,
-          "description": "Penne pasta tossed with seasonal vegetables in a light garlic and olive oil sauce.",
-          "image": "vegetable+pasta"
+          "id": "roll-12",
+          "name": "Plátano Roll",
+          "price": 8.0,
+          "description": "Cama de plátano (sin arroz), cangrejo, cebollín, queso crema. Topping de ensalada de wakame y cangrejo.",
+          "image": "platano-roll.jpg"
+        },
+        {
+          "id": "roll-12",
+          "name": "Plátano Roll",
+          "price": 8.0,
+          "description": "Cama de plátano (sin arroz), cangrejo, cebollín, queso crema. Topping de ensalada de wakame y cangrejo.",
+          "image": "platano-roll.jpg"
+        },
+        {
+          "id": "roll-13",
+          "name": "Camarón Lush Roll",
+          "price": 8.0,
+          "description": "Relleno de camarones, cangrejo, cebollín, queso crema. Toppi, de cangrejo crocante y aderezos.",
+          "image": "platano-roll.jpg"
+        },
+        {
+          "id": "roll-12",
+          "name": "Kani Roll",
+          "price": 6.0,
+          "description": "Relleno de cangrejo, cebollín, queso crema. Topping de ensalada y aderezos.",
+          "image": "kani-roll.jpg"
+        },
+        {
+          "id": "roll-12",
+          "name": "Valentine's Sake Roll",
+          "price": 9.0,
+          "description": "Relleno de Salmón, cangrejo, cebollín, queso crema. Topping de salmón spicy con maracuyá",
+          "image": "sake-roll.jpg"
+        },
+        {
+          "id": "roll-12",
+          "name": "Magnate Roll",
+          "price": 10.0,
+          "description": "Cama de pescado blanco (sin arroz), cangrejo, pescado blanco y salmón, aguacate, cebollín, Topping de wakame y salsa Fuji.",
+          "image": "magnate-roll.jpg"
+        },
+        {
+          "id": "roll-12",
+          "name": "Sushi Dog",
+          "price": 8.0,
+          "description": "Roll sin cortar. Relleno de cangrejo tempura, aguacate, cebollín, camarones crocantes y ensalada dinamita.",
+          "image": "sushi-dog.jpg"
         }
       ]
     },
     {
-      "id": "desserts",
-      "name": "Desserts",
+      "id": "promos",
+      "name": "Promos",
       "items": [
         {
-          "id": "des1",
-          "name": "Tiramisu",
+          "id": "promo-1",
+          "name": "12 Rolls 1 sabor",
           "price": 7.99,
-          "description": "Classic Italian dessert made with layers of coffee-soaked ladyfingers and mascarpone cream.",
-          "image": "tiramisu"
+          "description": "Entrada de camarones crocantes + Topping de Ensalada de Wakame, Cangrejo y Aderezos + Soya.",
+          "image": "promo-12rolls.jpg"
         },
         {
-          "id": "des2",
-          "name": "Chocolate Lava Cake",
+          "id": "promo-2",
+          "name": "12 Rolls 1 sabor predeterminado",
           "price": 8.99,
-          "description": "Warm chocolate cake with a gooey center, served with vanilla ice cream.",
-          "image": "chocolate+lava+cake"
+          "description": "Entrada de camarones crocantes + Topping de Ensalada de Wakame, Cangrejo y Aderezos + Soya + Ensalada Kani.",
+          "image": "promo-12rolls+kani.jpg"
         },
         {
-          "id": "des3",
-          "name": "New York Cheesecake",
-          "price": 8.99,
-          "description": "Creamy New York-style cheesecake served with a berry compote.",
-          "image": "cheesecake"
+          "id": "promo-3",
+          "name": "30 Rolls 3 sabores",
+          "price": 11.0,
+          "description": "Topping de Ensalada de Wakame, Cangrejo y Aderezos + Salsas Fuji y Anguila + Soya.",
+          "image": "promo-30rolls.jpg"
         },
         {
-          "id": "des4",
-          "name": "Crème Brûlée",
-          "price": 7.99,
-          "description": "Rich custard topped with a layer of hard caramel.",
-          "image": "creme+brulee"
+          "id": "promo-4",
+          "name": "Barco 44 Rolls",
+          "price": 24.99,
+          "description": "20 fríos: Fuji y Waikiki y 24 tempura: Camarón y Tiger + Aderezos + 4 Topping diferentes + Soya.",
+          "image": "promo-44rolls.jpg"
+        },
+        {
+          "id": "promo-5",
+          "name": "Barco 50 Rolls 4 sabores",
+          "price": 19.99,
+          "description": "Topping de Ensalada de Wakame, Cangrejo y aderezos +  Salsas Fuji, Anguila, Sésamo + Soya. Obsequio: Bebida",
+          "image": "barco-50rolls.jpg"
+        },
+        {
+          "id": "promo-6",
+          "name": "Barco 60 Rolls 5 sabores",
+          "price": 24.99,
+          "description": "Topping de Ensalada de Wakame, Cangrejo y aderezos +  Salsas Fuji, Anguila, Sésamo + Soya. Obsequio: Bebida",
+          "image": "barco-50rolls.jpg"
         }
       ]
     },
     {
-      "id": "drinks",
-      "name": "Drinks",
+      "id": "otros",
+      "name": "Otros",
       "items": [
         {
-          "id": "drink1",
-          "name": "House Red Wine",
-          "price": 7.99,
-          "description": "Our signature red wine blend.",
-          "image": "red+wine",
-          "unit": "glass"
+          "id": "wok",
+          "name": "Woke Mixto",
+          "price": 8.99,
+          "description": "Lomito, pollo, camarón, vegetales mixtos y fideos chinos",
+          "image": "woke.jpg"
         },
         {
-          "id": "drink2",
-          "name": "Craft Beer",
+          "id": "promo-kids",
+          "name": "Promo kids",
           "price": 6.99,
-          "description": "Rotating selection of local craft beers.",
-          "image": "craft+beer",
-          "unit": "pint"
+          "description": "Nuggets de Pollo +  450gr. papitas fritas a la francesa, salsas: ketchup y  🧀 cheddar.",
+          "image": "promo-kids.jpg"
         },
         {
-          "id": "drink3",
-          "name": "Classic Mojito",
-          "price": 9.99,
-          "description": "Refreshing cocktail with rum, mint, lime, and soda water.",
-          "image": "mojito"
+          "id": "promo-club",
+          "name": "Club House",
+          "price": 6.0,
+          "description": "Sandwich de pollo + papas fritas",
+          "image": "club-house.jpg"
         },
         {
-          "id": "drink4",
-          "name": "Fresh Lemonade",
+          "id": "ensaladas",
+          "name": "Ensalada Ebi / Fish / Dinamita",
           "price": 4.99,
-          "description": "Homemade lemonade with fresh lemons and a hint of mint.",
-          "image": "lemonade"
+          "description": "",
+          "image": "ensaladas.jpg"
+        },
+        {
+          "id": "ensalada-kani",
+          "name": "Ensalada Kani",
+          "price": 6.99,
+          "description": "Cangrejo",
+          "image": "ensalada-kani.jpg"
+        },
+        {
+          "id": "racion-camarones",
+          "name": "Ración de Camarones crocantes",
+          "price": 6.99,
+          "description": "",
+          "image": "racion-camarones.jpg"
+        },
+        {
+          "id": "racion-aros",
+          "name": "Ración de Aros de cebolla",
+          "price": 3.99,
+          "description": "",
+          "image": "aros-cebolla.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "items": [
+        {
+          "id": "bebida-1",
+          "name": "Nestea Japones",
+          "price": 2.0,
+          "description": "500ml"
+        },
+        {
+          "id": "bebida-2",
+          "name": "Té verde",
+          "price": 2.0,
+          "description": "1 litro"
+        },
+        {
+          "id": "bebida-3",
+          "name": "Coca Cola 1L",
+          "price": 2.0,
+          "description": ""
+        },
+        {
+          "id": "bebida-4",
+          "name": "Coca Cola 1.5L",
+          "price": 2.5,
+          "description": ""
+        },
+        {
+          "id": "bebida-5",
+          "name": "Coca Cola 2L",
+          "price": 3.0,
+          "description": ""
         }
       ]
     }

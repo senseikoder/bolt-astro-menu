@@ -4,7 +4,7 @@ import path from 'path';
 
 const UPLOAD_DIR = './public/uploads';
 
-function saveUploadedFile(file) {
+async function saveUploadedFile(file) {
   if (!file || !file.name) {
     return null;
   }
@@ -12,17 +12,12 @@ function saveUploadedFile(file) {
   const fileName = `${Date.now()}-${file.name}`;
   const filePath = path.join(UPLOAD_DIR, fileName);
 
-  // Ensure the upload directory exists
-  if (!fs.existsSync(UPLOAD_DIR)) {
-    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-  }
-
   // Write the file buffer to the server
-  fs.writeFileSync(filePath, file.buffer);
+  const buffer = Buffer.from(await file.arrayBuffer());
+  fs.writeFileSync(filePath, buffer);
 
   return `/uploads/${fileName}`;
 }
-
 
 export const getAllProducts = () => {
   return db.prepare('SELECT * FROM products').all();
@@ -32,12 +27,13 @@ export const getProductById = (id) => {
   return db.prepare('SELECT * FROM products WHERE id = ?').get(id);
 };
 
-export const createProduct = (product, imageFile) => {
+export const createProduct = async (product, imageFile) => {
+  
   const { name, description, price, category, is_available } = product;
   let image = null;
-  
+
   if (imageFile) {
-    image = saveUploadedFile(imageFile);
+    image = await saveUploadedFile(imageFile);    
   }
 
   const stmt = db.prepare(`
