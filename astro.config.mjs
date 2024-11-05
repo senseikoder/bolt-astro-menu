@@ -6,6 +6,8 @@ import vue from '@astrojs/vue';
 
 import db from '@astrojs/db';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   vite: {
     ssr: {
@@ -15,5 +17,5 @@ export default defineConfig({
 
   output: "hybrid",
   integrations: [vue(), db()],
-  adapter: netlify(),
+  adapter: cloudflare(),
 });
