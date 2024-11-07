@@ -6,60 +6,64 @@
       <i class="fas fa-times"></i>
     </span>
   </button>
-  <h2 class="title is-4 mb-4">Contact Details</h2>
+  <h2 class="title is-4 mb-4">Detalles del Pedido</h2>
   <form id="contact-form">
     <div class="box mb-4">
-      <h3 class="title is-5 mb-3">Payment Methods</h3>
+      <h3 class="title is-5 mb-3">Métodos de Pago</h3>
       <div class="field">
         <div class="control">
           <label class="radio">
-            <input type="radio" name="payment" value="credit-card" checked>
-            Credit Card
+            <input type="radio" name="payment" value="Pago móvil" checked>
+            Pago Móvil
           </label>
           <label class="radio">
-            <input type="radio" name="payment" value="paypal">
-            PayPal
+            <input type="radio" name="payment" value="Efectivo">
+            Efectivo $/Bs
           </label>
           <label class="radio">
-            <input type="radio" name="payment" value="cash">
-            Cash on Delivery
+            <input type="radio" name="payment" value="Zinli">
+            Zinli
+          </label>
+          <label class="radio">
+            <input type="radio" name="payment" value="Binance">
+            Binance
           </label>
         </div>
       </div>
     </div>
 
     <div class="box mb-4">
-      <h3 class="title is-5 mb-3">Shipping Method / Pickup Options</h3>
+      <h3 class="title is-5 mb-3">Delivery / Pickup</h3>
       <div class="field">
         <div class="control">
           <label class="radio">
             <input type="radio" name="shipping" value="delivery" checked>
-            Home Delivery
+            Delivery
           </label>
           <label class="radio">
             <input type="radio" name="shipping" value="pickup">
-            In-Store Pickup
+            Pickup
           </label>
         </div>
       </div>
     </div>
 
     <div class="box mb-4">
-      <h3 class="title is-5 mb-3">Customer Information</h3>
+      <h3 class="title is-5 mb-3">Datos del cliente</h3>
       <div class="field">
-        <label class="label">Name</label>
+        <label class="label">Nombre</label>
         <div class="control">
           <input class="input" type="text" name="name" required>
         </div>
       </div>
       <div class="field">
-        <label class="label">Phone</label>
+        <label class="label">Teléfono</label>
         <div class="control">
           <input class="input" type="tel" name="phone" required>
         </div>
       </div>
       <div class="field">
-        <label class="label">Address</label>
+        <label class="label">Dirección</label>
         <div class="control">
           <textarea class="textarea" name="address" required></textarea>
         </div>
@@ -68,7 +72,7 @@
 
     <div class="field is-grouped is-grouped-centered">
       <div class="control">
-        <button type="submit" class="button is-primary">Place Order</button>
+        <button type="submit" class="button is-primary">Confirmar Pedido</button>
       </div>
     </div>
   </form>
@@ -150,11 +154,11 @@
       // Update order summary with contact information
       const summaryContact = document.getElementById('summary-contact');
       summaryContact.innerHTML = `
-        <p><strong>Name:</strong> ${contactInfo.name}</p>
-        <p><strong>Phone:</strong> ${contactInfo.phone}</p>
-        <p><strong>Address:</strong> ${contactInfo.address}</p>
-        <p><strong>Payment:</strong> ${contactInfo.payment}</p>
-        <p><strong>Shipping:</strong> ${contactInfo.shipping}</p>
+        <p><strong>Nombre:</strong> ${contactInfo.name}</p>
+        <p><strong>Teléfono:</strong> ${contactInfo.phone}</p>
+        <p><strong>Dirección:</strong> ${contactInfo.address}</p>
+        <p><strong>Pago:</strong> ${contactInfo.payment}</p>
+        <p><strong>Envío:</strong> ${contactInfo.shipping}</p>
       `;
 
       // Update order summary with product information

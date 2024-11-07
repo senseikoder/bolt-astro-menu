@@ -10,11 +10,13 @@ function addToCart(item) {
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
+    console.log(item);
+    
     cart.push({ ...item, quantity: 1 });
   }
   saveCart();
   updateCartUI();
-  showNotification(`Added ${item.name} to cart`);
+  showNotification(`${item.name} agregado al carrito`);
 }
 
 function removeFromCart(itemId) {
@@ -56,7 +58,7 @@ function updateCartUI() {
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img src="https://source.unsplash.com/random/128x128?${
+            <img src="/images/${
               item.image
             }" alt="${item.name}" class="cart-item-image">
           </p>
@@ -66,7 +68,7 @@ function updateCartUI() {
             <p>
               <strong>${item.name}</strong>
               <br>
-              <small>$${item.price.toFixed(2)} each</small>
+              <small>$${item.price.toFixed(2)} c/u</small>
             </p>
           </div>
         </div>
@@ -141,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id: button.dataset.id,
         name: button.dataset.name,
         price: parseFloat(button.dataset.price),
+        image: button.dataset.image
       };
       addToCart(item);
     });
