@@ -96,11 +96,11 @@ import seeMoreConfig from "../data/seeMoreConfig.json";
       const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
       const contactInfo = JSON.parse(localStorage.getItem("contactInfo")) || {};
 
-      let message = "🍽️ *New Order* 🍽️\n\n";
+      let message = "🍽️ *Acabo de hacer este pedido en su Menú Online* 🍣\n\n";
 
       // Add contact information
       message += "*Información de contacto:*\n";
-      message += "__________________\n";
+      message += "__________________\n\n";
       message += `Nombre: *${contactInfo.name}*\n`;
       message += `Teléfono 📱: ${contactInfo.phone}\n`;
       message += `Dirección 📍: ${contactInfo.address}\n`;
@@ -117,12 +117,14 @@ import seeMoreConfig from "../data/seeMoreConfig.json";
 
       // Add total
       message += `\n*Total 💰: $${total.toFixed(2)}*`;
+      message +=
+        "☝ Por favor envía este mensaje y te atenderemos a la brevedad";
 
       // Encode the message for URL
       const encodedMessage = encodeURIComponent(message);
 
       // Create WhatsApp URL
-      const whatsappUrl = `https://wa.me/${whatsapp.replace(/\D/g, "")}?text=${encodedMessage}`;
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsapp.replace(/\D/g, "")}&text=${encodedMessage}`;
 
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, "_blank");
